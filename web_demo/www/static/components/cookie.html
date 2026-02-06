@@ -1,0 +1,77 @@
+<script>
+	function enableCookies() {
+		const $cookie = document.querySelector('cookie-wrapper')
+		$cookie.style.bottom = "-100px"
+		localStorage.setItem('cookie-checked', "true")
+	}
+</script>
+<cookie-wrapper>
+	<cookie>
+		<cookie-body>This website uses delicious cookies</cookie-body>
+		<cookie-confim onclick="enableCookies()">
+			<cookie-text>Gimme the cookie!</cookie-text>
+			<cookie-img>🍪</cookie-img>
+		</cookie-confim>
+	</cookie>
+</cookie-wrapper>
+<style>
+	cookie-wrapper {
+		display: block;
+		position: fixed;
+		margin: 0 auto;
+		bottom: 2rem;
+		width: 100%;
+		left: 0;
+		z-index: 1;
+		transition-property: bottom;
+		transition-duration: 300ms;
+		transition-timing-function: ease-in-out;
+	}
+
+	cookie {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #198de6;
+		font-size: 1rem;
+		justify-self: center;
+		padding: 0.5rem 1rem;
+		background-color: rgba(255, 255, 255, .75);
+		border: 2px solid #198de6;
+		border-radius: 3px;
+		width: max-content;
+		margin: 0 auto;
+		backdrop-filter: blur(10px);
+		transition-property: bottom;
+		transition-duration: 300ms;
+		transition-timing-function: ease-in-out;
+	}
+
+	cookie cookie-body {
+		margin-right: 1rem;
+	}
+
+	cookie cookie-confim {
+		display: flex;
+		align-items: center;
+		padding: 0.1rem 0.5rem;
+		border: 2px solid #198de6;
+		color: #198de6;
+		background-color: #fff;
+		border-radius: 3px;
+		cursor: pointer;
+		transition-property: background-color, color;
+		transition-duration: 300ms;
+		transition-timing-function: linear;
+	}
+
+	cookie cookie-confim:hover {
+		background-color: #198de6;
+		color: #fff;
+	}
+
+	cookie cookie-confim cookie-img {
+		margin-left: 0.5rem;
+		font-size: 1.5rem;
+	}
+</style>

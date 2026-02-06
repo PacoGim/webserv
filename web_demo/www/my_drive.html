@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Webserv · My Drive</title>
+		<link rel="stylesheet" href="/static/fonts/font.css" />
+		<link rel="stylesheet" href="/static/styles/style.css" />
+		<link rel="stylesheet" href="/static/styles/listing.css" />
+		<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+		<script src="/static/js/load_components.js" defer></script>
+		<script src="/static/js/notification.js" defer></script>
+		<script src="/static/js/my_drive.js" defer></script>
+	</head>
+	<body debug_mode="false">
+		<component id="debug"></component>
+		<component id="navbar"></component>
+		<component id="cookie"></component>
+		<component id="notification"></component>
+		<head-title>My Drive</head-title>
+		<section id="fileUpload">
+			<section-title> File Upload </section-title>
+			<section-body>
+				<button onclick="prepareFileUpload()">Select file</button>
+				<span onclick="prepareFileUpload()">...</span>
+				<button onclick="handleFileUpload()">Upload file</button>
+			</section-body>
+		</section>
+		<my-drive></my-drive>
+		<input type="file" name="fileUploadInput" id="fileUploadInput" />
+		<component id="footer"></component>
+	</body>
+</html>

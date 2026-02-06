@@ -1,0 +1,1 @@
+g++ -std=c++98 -g -Wall -Wextra -Werror -Wpedantic $1 && valgrind --track-fds=yes ./a.out && time ./a.out

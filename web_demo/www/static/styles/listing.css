@@ -1,0 +1,60 @@
+div.title-container {
+	color: #fff;
+	display: block;
+	text-align: center;
+}
+
+div.listing {
+	display: flex;
+	flex-direction: column;
+}
+
+div[role='listitem'] {
+	display: grid;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	padding-right: 0;
+	background: rgba(0, 0, 0, 0.1);
+	grid-template-columns: 1fr auto auto;
+	margin-bottom: 0.5rem;
+	border-radius: 3px;
+	color: #fff;
+}
+
+div[role='listitem'] .file-nav,
+div[role='listitem'] .download-nav,
+div[role='listitem'] .dir-nav {
+	text-decoration: none;
+	margin-right: 0.75rem;
+	display: flex;
+}
+
+div[role='listitem'] img{
+	filter: invert(0);
+	transform: scale(1);
+	
+	transition-property: filter, transform;
+	transition-duration: 300ms;
+	transition-timing-function: linear, ease-in-out;
+}
+
+div[role='listitem'] img:hover{
+	filter: invert(1);
+	transform: scale(1.4);
+}
+
+div.nav-container {
+	display: flex;
+	justify-content: center;
+	font-size: 1.5rem;
+	color: #fff;
+	margin-bottom: 1rem;
+}
+
+div.nav-container a:visited {
+	color: #fff;
+}
+
+my-drive{
+	padding-bottom: 7rem;
+}

@@ -1,0 +1,178 @@
+{
+  "max_events": 64,
+  "servers": [
+    {
+      "server_name": "127.0.0.1",
+      "port": 6000,
+      "timeout_packet": 300,
+      "timeout_request": 300,
+      "locations": [
+        {
+          "uri": "/",
+          "path": "www/index.html",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/*",
+          "path": "www/",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/directory*",
+          "path": "YoupiBanane",
+          "methods": [
+            "GET"
+          ],
+          "default_index": "youpi.bad_extension"
+        },
+        {
+          "uri": "*.bla",
+          "path": "YoupiBanane",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "ubuntu_cgi_tester"
+        }
+      ]
+    },
+    {
+      "server_name": "127.0.0.1",
+      "port": 7000,
+      "timeout_packet": 1,
+      "timeout_request": 5,
+      "locations": [
+        {
+          "uri": "*.bla",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "/home/jbourdoi/myworks/webserv_poc/ubuntu_cgi_tester"
+        },
+        {
+          "uri": "/",
+          "path": "/directory",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/put_test/*",
+          "path": "/goinfre/jbourdoi/",
+          "methods": [
+            "PUT"
+          ],
+          "max_body": 100000
+        },
+        {
+          "uri": "/directory/*",
+          "path": "/YoupiBanane/*",
+          "default_index": "youpi.bad_extension",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/post_body",
+          "methods": [
+            "POST"
+          ],
+          "max_body": 100
+        }
+      ]
+    },
+    {
+      "server_name": "127.0.0.1",
+      "port": 8000,
+      "timeout_packet": 1,
+      "timeout_request": 5,
+      "locations": [
+        {
+          "uri": "*.bla",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "/home/jbourdoi/myworks/webserv_poc/ubuntu_cgi_tester"
+        },
+        {
+          "uri": "/",
+          "path": "/directory",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/put_test/*",
+          "path": "/goinfre/jbourdoi/",
+          "methods": [
+            "PUT"
+          ],
+          "max_body": 100000
+        },
+        {
+          "uri": "/directory/*",
+          "path": "/YoupiBanane/*",
+          "default_index": "youpi.bad_extension",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/post_body",
+          "methods": [
+            "POST"
+          ],
+          "max_body": 100
+        }
+      ]
+    },
+    {
+      "server_name": "127.0.0.1",
+      "port": 9000,
+      "timeout_packet": 1,
+      "timeout_request": 5,
+      "locations": [
+        {
+          "uri": "*.bla",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "/home/jbourdoi/myworks/webserv_poc/ubuntu_cgi_tester"
+        },
+        {
+          "uri": "/",
+          "path": "/directory",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/put_test/*",
+          "path": "/goinfre/jbourdoi/",
+          "methods": [
+            "PUT"
+          ],
+          "max_body": 100000
+        },
+        {
+          "uri": "/directory/*",
+          "path": "/YoupiBanane/*",
+          "default_index": "youpi.bad_extension",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/post_body",
+          "methods": [
+            "POST"
+          ],
+          "max_body": 100
+        }
+      ]
+    }
+  ]
+}

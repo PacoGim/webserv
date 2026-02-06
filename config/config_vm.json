@@ -1,0 +1,197 @@
+{
+	"max_events": 1024,
+	"max_clients": 10000,
+	"page_404": "/goinfre/web_demo/www/404.html",
+	"page_403": "/goinfre/web_demo/www/403.html",
+	"servers": [
+		{
+			"server_name": "0.0.0.0",
+			"port": 9999,
+			"timeout_packet": 120,
+			"timeout_request": 3600,
+			"enable_listing": false,
+			"enforce_login": {
+				"enable": false,
+				"location": {
+					"uri": "/login",
+					"path": "/goinfre/web_demo/www/login.html",
+					"methods": [
+						"GET",
+						"POST",
+						"PUT",
+						"DELETE"
+					],
+					"max_body": 50
+				}
+			},
+			"locations": [
+				{
+					"uri": "/static/*",
+					"path": "/goinfre/web_demo/www/static/",
+					"methods": [
+						"GET",
+						"HEAD"
+					]
+				},
+				{
+					"uri": "/",
+					"path": "/goinfre/web_demo/www/index.html",
+					"methods": [
+						"GET"
+					]
+				},
+				{
+					"uri": "/*",
+					"path": "/goinfre/web_demo/www/",
+					"methods": [
+						"GET",
+						"HEAD"
+					],
+					"default_index": "index.html"
+				},
+				{
+					"uri": "/www/*",
+					"path": "/goinfre/web_demo/www/",
+					"methods": [
+						"GET",
+						"HEAD"
+					],
+					"enable_listing": true
+				},
+				{
+					"uri": "/admin/*",
+					"path": "/home/",
+					"methods": [
+						"GET",
+						"HEAD"
+					],
+					"enable_listing": true
+				},
+				{
+					"uri": "/directory/*",
+					"path": "/goinfre/web_demo/YoupiBanane/",
+					"enable_listing": false,
+					"methods": [
+						"GET"
+					],
+					"default_index": "youpi.bad_extension"
+				},
+				{
+					"uri": "/directory/*.bla",
+					"path": "/goinfre/web_demo/YoupiBanane/",
+					"methods": [
+						"POST"
+					],
+					"cgi": "/goinfre/script_tester/ubuntu_cgi_tester",
+					"max_body": 100000000
+				},
+				{
+					"uri": "/php/*.php",
+					"path": "/goinfre/web_demo/php/",
+					"methods": [
+						"POST",
+						"GET",
+						"HEAD"
+					],
+					"cgi": "/usr/bin/php-cgi",
+					"max_body": 1000
+				},
+				{
+					"uri": "/post_body",
+					"methods": [
+						"POST"
+					],
+					"max_body": 100
+				},
+				{
+					"uri": "/download",
+					"path": "/goinfre/download/",
+					"enable_listing": true,
+					"methods": [
+						"PUT",
+						"GET"
+					],
+					"max_body": 80000000
+				},
+				{
+					"uri": "/download/*",
+					"path": "/goinfre/download/",
+					"methods": [
+						"HEAD",
+						"GET"
+					]
+				}
+			]
+		},
+		{
+			"server_name": "127.0.0.1",
+			"port": 8888,
+			"timeout_packet": 120,
+			"timeout_request": 3600,
+			"enable_listing": false,
+			"enforce_login": {
+				"enable": false,
+				"location": {
+					"uri": "/login",
+					"path": "/goinfre/web_demo/www/login.html",
+					"methods": [
+						"GET",
+						"POST",
+						"PUT",
+						"DELETE"
+					],
+					"max_body": 50
+				}
+			},
+			"locations": [
+				{
+					"uri": "/admin/*",
+					"path": "/home/",
+					"methods": [
+						"GET",
+						"HEAD"
+					],
+					"enable_listing": true
+				},
+				{
+					"uri": "/directory/*",
+					"path": "/goinfre/web_demo/YoupiBanane/",
+					"enable_listing": false,
+					"methods": [
+						"GET"
+					],
+					"default_index": "youpi.bad_extension"
+				},
+				{
+					"uri": "/directory/*.bla",
+					"path": "/goinfre/web_demo/YoupiBanane/",
+					"methods": [
+						"POST"
+					],
+					"cgi": "/goinfre/script_tester/ubuntu_cgi_tester",
+					"max_body": 100000000
+				},
+				{
+					"uri": "/php/*.php",
+					"path": "/goinfre/web_demo/php/",
+					"methods": [
+						"GET",
+						"HEAD"
+					],
+					"cgi": "/usr/bin/php-cgi",
+					"max_body": 1000
+				},
+				{
+					"uri": "/download",
+					"path": "/goinfre/download/",
+					"enable_listing": true,
+					"methods": [
+						"HEAD",
+						"GET"
+					],
+					"max_body": 80000000
+				}
+			]
+		}
+	]
+}

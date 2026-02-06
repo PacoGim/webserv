@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+	<script src="/static/js/load_components.js" defer></script>
+	<link rel="stylesheet" href="/static/fonts/font.css" />
+	<link rel="stylesheet" href="/static/styles/style.css" />
+	<style>
+		h1 {
+			font-size: 3rem;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		separator {
+			display: block;
+			height: 3px;
+			width: 50%;
+			background-color: white;
+			margin-bottom: 1rem;
+			border-radius: 100px;
+		}
+
+		login-body {
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+
+		form {
+			margin-bottom: 1rem;
+		}
+
+		input {
+			flex-grow: 1;
+			background-color: rgba(0, 0, 0, 0.1);
+			border: none;
+			border-radius: 3px 3px 0 0;
+			box-shadow: inset 0px -2px #fff;
+			padding: 0.25rem 0.75rem;
+			color: #fff;
+		}
+
+		button {
+			margin-left: 1rem;
+		}
+
+		h4 {
+			padding: 0.5rem 1rem;
+			background-color: crimson;
+			color: white;
+			transition-property: opacity;
+			transition-duration: 250ms;
+			transition-timing-function: ease-in-out;
+			border-radius: 3px;
+		}
+
+		p.loginPseudo {
+			color: #fff;
+			text-align: center;
+			font-variation-settings: 'wght' 600;
+		}
+
+		img.nope {
+			margin-top: 1rem;
+			transition-property: opacity;
+			transition-duration: 250ms;
+			transition-timing-function: ease-in-out;
+			width: 200px;
+			border-radius: 10px;
+		}
+	</style>
+	<title>Webserv · Login</title>
+</head>
+
+<body>
+	<component id="navbar"></component>
+	<component id="debug"></component>
+	<component id="cookie"></component>
+	<head-title>Webserv - Login</head-title>
+	<login-body>
+		<form id="login" action="/login" method="POST">
+			<p class="loginPseudo">Choose a pseudo</p>
+			<label>
+				<input type="text" name="pseudo" placeholder="Pseudo" />
+			</label>
+			<button type="submit">Send</button>
+		</form>
+		<h4 id="error" style="opacity: 0">a</h4>
+		<img class="nope" style="opacity: 0" src="/static/img/nope-no.gif" alt="" />
+	</login-body>
+	<script>
+		const formEl = document.querySelector('form#login')
+		const errorEl = document.querySelector('h4#error')
+		const hostname = formEl.action
+		const inputName = formEl.querySelector('input')
+		const nopeImg = document.querySelector('img.nope')
+
+		const cookiesLogin = document.cookie.split(" ").join('').split(";").map(cookie => cookie.split("=")).map(cookie => { return { key: cookie[0], value: cookie[1] } })
+		const idCookieLogin = cookiesLogin.find(cookie => cookie.key === "id")
+		
+		if (idCookieLogin && idCookieLogin.value != "")
+			window.location = "/"
+
+		formEl.addEventListener('submit', evt => {
+			evt.preventDefault()
+			fetch(hostname, {
+				method: formEl.method,
+				body: 'pseudo=' + inputName.value,
+				redirect: 'manual'
+			})
+				.then(async res => {
+					if (res.ok) {
+						const location = res.headers.get('Location')
+						if (location) window.location = location
+					} else {
+						const error = res.headers.get("Error")
+						if (error)
+							showError(error)
+						else
+							throw await res.text()
+					}
+				})
+				.catch(err => {
+					showError(err)
+				})
+		})
+
+		function showError(err) {
+			writeDebug(err)
+			if (err) errorEl.innerText = err
+			else errorEl.innerText = 'No errors returned'
+			errorEl.style.opacity = '1'
+			nopeImg.style.opacity = '1'
+			setTimeout(() => {
+				errorEl.style.opacity = '0'
+				nopeImg.style.opacity = '0'
+			}, 5000)
+
+		}
+	</script>
+	<component id="footer"></component>
+</body>
+
+</html>

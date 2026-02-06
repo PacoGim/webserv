@@ -1,0 +1,83 @@
+{
+  "max_events": 64,
+  "servers": [
+    {
+      "server_name": "localhost",
+      "port": 9999,
+      "timeout_packet": 3600,
+      "timeout_request": 3600,
+      "enable_listing": true,
+      "enforce_login": {
+        "enable": true,
+        "location": {
+          "uri": "/login",
+          "path": "login.html",
+          "methods": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+          ],
+          "max_body": 30
+        }
+      },
+      "locations": [
+        {
+          "uri": "/",
+          "path": "www/index.html",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/pseudo",
+          "methods": [
+            "POST"
+          ]
+        },
+        {
+          "uri": "/*",
+          "path": "www",
+          "methods": [
+            "GET"
+          ],
+          "default_index": "index.html"
+        },
+        {
+          "uri": "/directory*",
+          "path": "YoupiBanane",
+          "methods": [
+            "GET"
+          ],
+          "default_index": "youpi.bad_extension"
+        },
+        {
+          "uri": "*.bla",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "ubuntu_cgi_tester",
+          "max_body": 100000000
+        },
+        {
+          "uri": "*.php",
+          "path": "php",
+          "methods": [
+            "POST",
+            "GET"
+          ],
+          "cgi": "/usr/bin/php-cgi",
+          "max_body": 1000
+        },
+        {
+          "uri": "/post_body",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "ubuntu_cgi_tester",
+          "max_body": 100
+        }
+      ]
+    }
+  ]
+}

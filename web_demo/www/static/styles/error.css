@@ -1,0 +1,70 @@
+error-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vmax;
+}
+
+body#error head-error {
+	color: #fff;
+	font-weight: 700;
+	font-size: 3rem;
+}
+
+body#error body-error {
+	display: flex;
+	justify-content: center;
+	margin-top: 0.25rem;
+	color: #fff;
+	font-weight: 700;
+	font-size: 1.25rem;
+}
+
+body-error video {
+	width: calc(100% - 2rem);
+}
+
+error-wrapper a {
+	text-decoration: none;
+	padding: 0.25rem 0.5rem;
+	margin-top: 1rem;
+	border-radius: 3px;
+	font-variation-settings: 'wght' 600;
+	border: 2px solid transparent;
+	transition-property: font-variation-settings, background-color, color, border-color;
+	transition-duration: 300ms;
+	transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045), linear;
+}
+
+error-wrapper a:hover {
+	font-variation-settings: 'wght' 800;
+}
+
+body[type='404'] {
+	background: linear-gradient(to bottom right, #d86969, #ff3333) no-repeat fixed;
+}
+
+body[type='404'] error-wrapper a {
+	background-color: #fff;
+	color: #ff3333;
+}
+body[type='404'] error-wrapper a:hover {
+	background-color: #ff3333;
+	color: #fff;
+	border-color: #fff;
+}
+
+body[type='403'] {
+	background: linear-gradient(to bottom right, #b3b3b3, #4d4d4d) no-repeat fixed;
+}
+
+body[type='403'] error-wrapper a {
+	background-color: #fff;
+	color: #4d4d4d;
+}
+body[type='403'] error-wrapper a:hover {
+	background-color: #4d4d4d;
+	color: #fff;
+	border-color: #fff;
+}

@@ -1,0 +1,43 @@
+<script></script>
+
+<footer>
+	<span>Made with ☕ and a lot of ❤️ by <bold>Jacques-André</bold> & <bold>Paco</bold></span>
+	<span><copy-left>&copy;</copy-left> 2025 PaJaco</span>
+</footer>
+
+<style>
+	copy-left {
+		display: inline-block;
+		transform: rotateZ(180deg);
+	}
+
+	bold {
+		font-variation-settings: 'wght' 700;
+	}
+
+	component#footer {
+		margin-block-start: auto;
+	}
+
+	footer {
+		position: fixed;
+		bottom: 0;
+		color: #fff;
+		display: flex;
+		width: 100%;
+		max-width: 800px;
+		padding: .5rem 1rem;
+		background-color: rgba(0, 0, 0, 0.2);
+		gap: 0.5rem;
+		border-radius: 3px 3px 0 0;
+		justify-content: space-between;
+		backdrop-filter: blur(10px);
+	}
+
+	@media only screen and (max-width: 540px) {
+		footer {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+</style>

@@ -1,0 +1,55 @@
+{
+  "max_events": 64,
+  "servers": [
+    {
+      "server_name": "127.0.0.1",
+      "port": 1234,
+      "timeout_packet": 1,
+      "timeout_request": 5,
+      "enable_listing": true,
+      "enforce_login": {
+        "enable": false
+      },
+      "locations": [
+        {
+          "uri": "/",
+          "path": "www/index.html",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/*",
+          "path": "www",
+          "methods": [
+            "GET"
+          ]
+        },
+        {
+          "uri": "/directory*",
+          "path": "YoupiBanane",
+          "methods": [
+            "GET"
+          ],
+          "default_index": "youpi.bad_extension"
+        },
+        {
+          "uri": "*.bla",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "ubuntu_cgi_tester",
+          "max_body": 100000000
+        },
+        {
+          "uri": "/post_body",
+          "methods": [
+            "POST"
+          ],
+          "cgi": "ubuntu_cgi_tester",
+          "max_body": 100
+        }
+      ]
+    }
+  ]
+}

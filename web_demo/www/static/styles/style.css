@@ -1,0 +1,278 @@
+* {
+	font-family: Nunito, serif;
+	outline: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(to bottom right, #6aabd9, #d5f7ff) no-repeat fixed;
+	background-size: cover;
+	margin-bottom: 3rem;
+}
+
+head-title {
+	display: block;
+	margin-top: 4rem;
+	text-align: center;
+	font-size: 1.75rem;
+	padding: 2rem 0;
+	color: #fff;
+	background: linear-gradient(to bottom, rgba(50,50,50,.25), rgba(50,50,50,0));
+}
+
+section {
+	margin-top: 2rem;
+}
+
+section section-title {
+	margin-left: 2.5rem;
+	color: #fff;
+	font-variation-settings: 'wght' 600;
+	font-size: 1.1rem;
+	text-shadow: 1px 0 rgba(0, 0, 0, 0.05), 1px 1px rgba(0, 0, 0, 0.05), -1px 0 rgba(0, 0, 0, 0.05), 0 -1px rgba(0, 0, 0, 0.05),
+		2px 0 rgba(0, 0, 0, 0.05), 2px 2px rgba(0, 0, 0, 0.05), -2px 0 rgba(0, 0, 0, 0.05), 0 -2px rgba(0, 0, 0, 0.05);
+}
+
+section section-title::after {
+	content: '';
+	display: block;
+	height: 5px;
+	width: calc(100% - 2rem);
+	border-radius: 100px;
+	margin-top: 0.25rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+	background-color: #fff;
+	box-shadow: 1px 0 rgba(0, 0, 0, 0.05), 1px 1px rgba(0, 0, 0, 0.05), -1px 0 rgba(0, 0, 0, 0.05), 0 -1px rgba(0, 0, 0, 0.05);
+}
+
+section section-body {
+	margin-top: 2rem;
+	padding: 0 2rem;
+}
+
+section#media section-body {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+section#media section-body img {
+	height: 128px;
+}
+
+section#fileUpload section-body {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+section#fileUpload section-body button {
+	flex-shrink: 0;
+}
+
+section#fileUpload section-body span {
+	width: auto;
+	flex-grow: 1;
+	border: none;
+	border-radius: 3px 3px 0 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0px -2px #fff;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.25rem 0.75rem;
+	font-size: 0.8rem;
+}
+
+section#nativeFormSubmit section-body {
+	display: block;
+}
+
+section#nativeFormSubmit section-body form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+section#nativeFormSubmit section-body form inputs {
+	display: flex;
+	gap: 1rem;
+	width: calc(100% - 4rem);
+}
+
+section#nativeFormSubmit section-body form input {
+	flex-grow: 1;
+	background-color: rgba(0, 0, 0, 0.1);
+	border: none;
+	border-radius: 3px 3px 0 0;
+	box-shadow: inset 0px -2px #fff;
+	padding: 0.25rem 0.75rem;
+}
+
+::placeholder {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+section#nativeFormSubmit section-body form button {
+	margin-top: 1rem;
+}
+
+section#customRequest {
+	padding-bottom: 7rem;
+}
+
+section#customRequest section-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 4fr 1fr min-content min-content 3fr 10fr;
+	gap: 1rem;
+	grid-auto-flow: row;
+	grid-template-areas:
+		'. method endpoint endpoint .'
+		'. body body body .'
+		'. . submit . .'
+		'. . statusCode . .'
+		'. statusResponse statusResponse statusResponse .'
+		'headers headers headers headers headers'
+		'response response response response response';
+}
+
+section#customRequest section-body input {
+	box-shadow: inset 0px -2px #fff;
+}
+
+section#customRequest section-body input,
+section#customRequest section-body textarea {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.1);
+	border: none;
+	border-radius: 3px 3px 0 0;
+	padding: 0.25rem 0.75rem;
+}
+
+section#customRequest section-body textarea {
+	border-radius: 3px;
+	padding: 0.5rem 0.75rem;
+	border: 2px solid #fff;
+}
+
+section#customRequest section-body .method {
+	grid-area: method;
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	border: 2px solid #fff;
+	border-radius: 3px;
+	padding: 0.25rem 0.5rem;
+}
+
+section#customRequest section-body .endpoint {
+	grid-area: endpoint;
+}
+
+section#customRequest section-body .body {
+	grid-area: body;
+}
+
+section#customRequest section-body .submit {
+	grid-area: submit;
+}
+
+section#customRequest section-body .statusCode {
+	grid-area: statusCode;
+	background-color: #fff;
+	width: fit-content;
+	font-size: 0.75rem;
+	padding: 0.2rem 0.6rem;
+	justify-self: center;
+	align-self: center;
+	border-radius: 100px;
+	font-variation-settings: 'wght' 700;
+}
+
+section#customRequest section-body .statusResponse {
+	grid-area: statusResponse;
+	text-align: center;
+	background-color: #fff;
+	width: max-content;
+	font-variation-settings: 'wght' 600;
+	place-self: center;
+	padding: 0.25rem 0.5rem;
+	font-size: 0.8rem;
+}
+
+section#customRequest section-body .response {
+	grid-area: response;
+}
+
+section#customRequest section-body .headers {
+	grid-area: headers;
+}
+
+a.button,
+button {
+	font-family: inherit;
+	background-color: #fff;
+	color: #3f6f8d;
+	border: 2px solid transparent;
+	padding: 0.25rem 0.75rem;
+	border-radius: 3px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	user-select: none;
+	cursor: pointer;
+	transition-property: color, background-color, border-color;
+	transition-duration: 150ms;
+	transition-timing-function: linear;
+}
+
+a.button:hover,
+button:hover {
+	color: #fff;
+	background-color: #3f6f8d;
+}
+
+a.button:active,
+button:active {
+	border: 2px solid #fff;
+}
+
+input-file {
+	display: block;
+	position: relative;
+}
+
+input[type='file'] {
+	display: none;
+}
+
+about-body {
+	color: #fff;
+	padding: 2rem;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	margin: 2rem;
+}
+
+@media only screen and (max-width: 740px) {
+	head-title {
+		margin-top: 5.35rem;
+	}
+}

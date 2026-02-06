@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Webserv</title>
+		<link rel="stylesheet" href="/static/fonts/font.css" />
+		<link rel="stylesheet" href="/static/styles/style.css" />
+		<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+		<script src="/static/js/main.js" defer></script>
+		<script src="/static/js/load_components.js" defer></script>
+	</head>
+	<body debug_mode="false">
+		<component id="debug"></component>
+		<component id="navbar"></component>
+		<component id="cookie"></component>
+		<head-title>Welcome to the Webserv Project</head-title>
+		<section id="media">
+			<section-title> Medias Example </section-title>
+			<section-body>
+				<img src="/static/img/img.png" alt="Sharky" />
+				<audio src="/static/audio/audio.mp3" controls></audio>
+			</section-body>
+		</section>
+		<section id="customRequest">
+			<section-title> Custom Request </section-title>
+			<section-body>
+				<select class="method" name="" id="">
+					<option value="GET">GET</option>
+					<option value="HEAD">HEAD</option>
+					<option value="POST">POST</option>
+					<option value="PUT">PUT</option>
+					<option value="DELETE">DELETE</option>
+				</select>
+				<input class="endpoint" type="text" placeholder="endpoint" />
+				<textarea class="body" name="" id="" placeholder="Body"></textarea>
+				<button class="submit">Send</button>
+				<span class="statusCode">___</span>
+				<span class="statusResponse">No requests done</span>
+				<textarea class="response" name="" id="" placeholder="Response"></textarea>
+				<textarea class="headers" name="" id="" placeholder="Headers" disabled></textarea>
+			</section-body>
+		</section>
+		<input type="file" name="fileUpload" id="fileUpload" />
+		<component id="footer"></component>
+	</body>
+</html>

@@ -1,0 +1,145 @@
+<script>
+	const $pseudoEl = document.querySelector('pseudo')
+	const $loginButton = document.querySelector('#login_button')
+	const $logoutButton = document.querySelector('#logout_button')
+
+	document.querySelectorAll('navigation a').forEach($el => {
+		if ($el.href === document.location.href) $el.classList.add('current')
+	})
+
+	const cookies = document.cookie
+		.split(' ')
+		.join('')
+		.split(';')
+		.map(cookie => cookie.split('='))
+		.map(cookie => {
+			return { key: cookie[0], value: cookie[1] }
+		})
+	const idCookie = cookies.find(cookie => cookie.key === 'id')
+
+	if (idCookie && idCookie.value !== '') {
+		$loginButton.style.display = 'none'
+		$logoutButton.style.display = 'inline'
+
+		fetch('/login', {
+			method: 'PUT',
+			body: idCookie.value
+		})
+			.then(res => {
+				if (res.status === 200) return res.text()
+				else deleteAllCookies()
+				return ''
+			})
+			.then(res => {
+				if (res) $pseudoEl.innerText = res
+			})
+	}
+	
+	function logout() {
+		fetch('/login', {
+			method: 'DELETE',
+			body: ''
+		}).then(async res => {
+			window.location.reload()
+			deleteAllCookies()
+		})
+	}
+
+	function deleteAllCookies() {
+		const cookies = document.cookie.split(';')
+		for (let cookie of cookies) {
+			const eqPos = cookie.indexOf('=')
+			const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie
+			document.cookie = name.trim() + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'
+		}
+	}
+</script>
+
+<navbar>
+	<webpage-title><a href="/">Webserv</a></webpage-title>
+	<navigation>
+		<a href="/">Home</a>
+		<a href="/about.html">About</a>
+		<a href="/www">File Explorer</a>
+		<a href="/my_drive.html">My Drive</a>
+	</navigation>
+	<pseudo></pseudo>
+	<a id="login_button" href="/login.html" class="button">Login</a>
+	<a id="logout_button" onclick="logout()" class="button">Logout</a>
+</navbar>
+
+<style>
+	navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem;
+		position: fixed;
+		color: #fff;
+		z-index: 1;
+		width: 100%;
+		max-width: 800px;
+		background-color: rgba(0, 0, 0, 0.2);
+		box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.15);
+		backdrop-filter: blur(10px);
+		border-bottom: 2px #fff solid;
+	}
+
+	navbar webpage-title {
+		font-size: 1.25rem;
+		font-variation-settings: 'wght' 700;
+	}
+
+	navbar webpage-title a {
+		text-decoration: none;
+		border-bottom: none;
+	}
+
+	navbar a {
+		color: #fff;
+	}
+
+	navbar navigation a {
+		color: #fff;
+		margin: 0 0.5rem;
+		padding: 0 0.75rem;
+		text-decoration: none;
+		box-shadow: inset 0 -2px 0 0 #fff;
+		transition-property: box-shadow, color, border-radius, font-variation-settings;
+		transition-duration: 300ms;
+		transition-timing-function: ease-in-out;
+	}
+	
+	navbar navigation a:hover {
+		color: #000;
+		border-radius: 3px;
+		box-shadow: inset 0 -60px 0 0 #fff;
+		font-variation-settings: 'wght' 700;
+	}
+
+	navbar navigation a.current::before {
+		content: '>';
+	}
+
+	navbar #logout_button {
+		display: none;
+	}
+
+	navbar navigation {
+		display: grid;
+		text-align: center;
+		color: #fff;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	navbar navigation:visited {
+		color: #fff;
+	}
+
+	@media only screen and (max-width: 740px) {
+		navbar navigation {
+			grid-template-columns: 1fr 1fr;
+			gap: 0.5rem;
+		}
+	}
+</style>

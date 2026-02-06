@@ -1,0 +1,56 @@
+<notification-wrapper></notification-wrapper>
+
+<style>
+	notification-wrapper {
+		position: fixed;
+		right: 1rem;
+		top: 6.35rem;
+		display: grid;
+		grid-template-areas: 'stack';
+		z-index: 3;
+	}
+
+	notification-container {
+		grid-area: stack;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+		transform: translateX(100px);
+		opacity: 0;
+	}
+
+	notification-container[data-enabled='true'] {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	notification {
+		border: 2px solid transparent;
+		padding: 0.5rem 0.75rem;
+		border-radius: 3px;
+		display: flex;
+		justify-content: space-between;
+		width: 250px;
+		backdrop-filter: blur(10px);
+	}
+
+	notification[type='success'] {
+		background-color: rgba(0, 255, 127, 0.6);
+		border-color: rgba(0, 255, 127, 1);
+		color: darkgreen;
+	}
+
+	notification[type='error'] {
+		background-color: rgba(244, 138, 160, 0.6);
+		border-color: #750b20;
+		color: #750b20;
+	}
+
+	notification[type='info'] {
+		background-color: transparent;
+		border-color: #0b4575;
+		color: #0b4575;
+	}
+
+	notification close-btn {
+		cursor: pointer;
+	}
+</style>

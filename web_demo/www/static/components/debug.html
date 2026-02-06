@@ -1,0 +1,69 @@
+<debug> Debug mode </debug>
+
+<style>
+	body[debug_mode='true'] debug {
+		transform: translateX(0%);
+	}
+
+	body[debug_mode='false'] debug {
+		transform: translateX(500%);
+	}
+
+	debug {
+		max-width: 800px;
+		font-size: 0.75rem;
+		position: fixed;
+		top: 61px;
+		color: #fff;
+		padding: 1rem;
+		background-color: rgba(0, 0, 0, 0.75);
+		z-index: 2;
+		width: 100%;
+		transition: transform 300ms ease-in-out;
+		max-height: 25%;
+		overflow: scroll;
+		pointer-events: none;
+	}
+</style>
+
+<script>
+	let debugModeDebounce
+	let debugText = ''
+	let isDebug = localStorage.getItem('isDebug') || false
+	let debugKeyword = 'debug'
+	const $debug = document.querySelector('debug')
+
+	document.querySelector('body').setAttribute('debug_mode', isDebug)
+	
+	document.addEventListener('keypress', e => {
+		clearTimeout(debugModeDebounce)
+		debugModeDebounce = setTimeout(() => {
+			debugText = ''
+		}, 2000)
+		debugText += e.key
+
+		if (debugText === 'debug') {
+			isDebug = !isDebug
+			localStorage.setItem('isDebug', isDebug)
+			document.querySelector('body').setAttribute('debug_mode', isDebug)
+			debugText = ''
+			return
+		}
+		for (let index in debugText) {
+			if (debugKeyword[index] !== debugText[index]) debugText = ''
+		}
+	})
+
+	function clearDebug() {
+		$debug.innerText = ''
+	}
+
+	function writeDebug(value) {
+		$debug.innerText += `
+${value}`
+		$debug.scroll({
+			top: $debug.scrollHeight,
+			behavior: 'smooth'
+		})
+	}
+</script>

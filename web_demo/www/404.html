@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Webserv · 404 Not Found</title>
+		<script src="/static/js/load_components.js" defer></script>
+		<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+		<link rel="stylesheet" href="/static/fonts/font.css" />
+		<link rel="stylesheet" href="/static/styles/style.css" />
+		<link rel="stylesheet" href="/static/styles/error.css" />
+	</head>
+
+	<body id="error" type="404">
+		<component id="navbar"></component>
+		<component id="cookie"></component>
+		<error-wrapper>
+			<head-error>404 Not Found</head-error>
+			<body-error>We are sorry but the asked ressource is not found</body-error>
+			<a href="/">Back Home</a>
+		</error-wrapper>
+		<component id="footer"></component>
+	</body>
+</html>

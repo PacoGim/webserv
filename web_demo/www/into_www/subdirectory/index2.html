@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../style.css"/>
+    <script src="/script.js" defer></script>
+    <title>Webserv · Index</title>
+</head>
+<body>
+<h1>Super Webserv site</h1>
+<a href="/into_www/1.png">About</a>
+<img src="/img.png" alt=""/>
+<audio src="/audio.mp3" controls></audio>
+
+<input id="fileInput" type="file" name="myfile"/>
+<br/><br/>
+<button id="sendFile">Send File</button>
+
+<form id="inscription" action="/inscription" method="post">
+    <input type="text" name="nom" value="Alice">
+    <input type="email" name="email" value="alice@example.com">
+    <button type="submit">Envoyer</button>
+</form>
+<div id="tests">
+    <select id="method">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="HEAD">HEAD</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+        <option value="UNK">PATCH</option>
+
+    </select>
+    <input id="uri" value=""/>
+    <textarea id="bodyReq" autocomplete="off"></textarea>
+    <button id="sendReq">Send</button>
+</div>
+<span id="statusRes">code de retour...</span>
+<textarea id="bodyRes" autocomplete="off">body de retour...</textarea>
+<footer>footer</footer>
+</body>
+</html>
